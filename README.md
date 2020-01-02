@@ -10,7 +10,7 @@
 
 ## Usage: 
 - Upon loading the solution site, you will notice a simple login form for the user to enter their email address & password, in order to login.  
-- Also on the login page, you will also notice a yellow colored button on the bottom left that can be used to reset the master app data, to the original state.  
+- Also on the login page, you will also notice a yellow colored button on the bottom left that can be used to reset the master app data, to the original state; NOTE: IN ORDER TO START TESTING THE ASSIGNMENT YOU MUST RESET THE MASTER DATA, as all data is stored inside the browser's local storage and nothing exists in either account's inbox till the master reset is done.
 - ONLY 2 users have been set up for the purposes of this assignment; please find below their email address and password, so that this can be tested properly:  
 
     - USER 1 (David Williams)
