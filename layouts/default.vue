@@ -91,8 +91,8 @@
       ></v-text-field>
       <!-- <v-toolbar-title v-text="title" /> -->
       <v-spacer />
-      <v-badge overlap color="orange">
-        <template v-if="unreadCount > 0" v-slot:badge>{{unreadCount > 0 ? unreadCount: null}}</template>
+      <v-badge v-if="unreadCount > 0" overlap color="orange">
+        <template v-slot:badge>{{unreadCount > 0 ? unreadCount: null}}</template>
         <v-btn text icon>
           <v-icon>mdi-email</v-icon>
         </v-btn>

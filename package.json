@@ -13,9 +13,9 @@
   "dependencies": {
     "@nuxtjs/moment": "^1.4.0",
     "nuxt": "^2.0.0",
+    "@nuxtjs/vuetify": "^1.0.0",
     "nuxt-vuex-localstorage": "^1.2.6"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.0.0"
   }
 }
