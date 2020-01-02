@@ -1,11 +1,11 @@
 # Solution for Sahaj UI Assignment
 
-> Solution is deployed here: https://pedantic-bell-bf34f6.netlify.com/
+> Solution is deployed here: https://sahajuinow.sandjay.now.sh/
 
 ## Summary of technologies used:
 - JS Framework: Vue.JS / NuxtJS / VueX  
 - Front end framework: Vuetify.JS  
-- Deployment platform: Netlify  
+- Deployment platform: Zeit's Now (Netlify caused deployment errors)  
 - Data is persisted in local storage, and accessed via VueJS's Vuex system  
 
 ## Usage: 
