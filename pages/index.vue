@@ -58,9 +58,9 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn color="orange" @click="masterReset"><v-icon left>mdi-database-refresh</v-icon>Master Reset</v-btn>
+                <v-btn color="orange" name="btn_reset" @click="masterReset"><v-icon left>mdi-database-refresh</v-icon>Master Reset</v-btn>
                 <v-spacer />
-                <v-btn color="success" @click="login"><v-icon left>mdi-login</v-icon>Login</v-btn>
+                <v-btn color="success" name="btn_login" @click="login"><v-icon left>mdi-login</v-icon>Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>

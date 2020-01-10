@@ -14,7 +14,7 @@
           Close
         </v-btn>
       </v-snackbar>
-      <v-dialog v-model="emailDialog" :persistent="dialogMode == 'Compose'" max-width="700px" @click:outside="dismissEmailDialog">
+      <v-dialog v-model="emailDialog" :persistent="dialogMode == 'Compose'" max-width="700px" @keydown.esc="dismissEmailDialog" @click:outside="dismissEmailDialog">
         <v-card>
           <v-card-title>
             <span v-if="dialogMode == 'Compose'" class="headline">Compose Mail</span>
@@ -24,10 +24,10 @@
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field v-model="new_email_to" label="To: " required></v-text-field>
+                  <v-text-field name="email_to" v-model="new_email_to" label="To: " required></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field v-model="new_email_subject" label="Subject: " required></v-text-field>
+                  <v-text-field name="email_subject" v-model="new_email_subject" label="Subject: " required></v-text-field>
                 </v-col>
                 <v-col cols="12">
                   <v-textarea
@@ -44,8 +44,8 @@
           <v-card-text v-else-if="readEmailObject && dialogMode == 'Read'">
             <v-row>
               <v-col cols="12">
-                <h4>From: <i>{{readEmailObject.senderName}} ({{readEmailObject.senderEmail}})</i></h4>
-                <h4>Subject: <i>{{readEmailObject.subject}}</i></h4>
+                <h4>From: <i name="senderDetails">{{readEmailObject.senderName}} ({{readEmailObject.senderEmail}})</i></h4>
+                <h4>Subject: <i name="emailSubject">{{readEmailObject.subject}}</i></h4>
                 <h4>Received: <i>{{readEmailObject.sentTime | humanizeTimestamp}}</i></h4>
                 <small>Content begins below</small><hr>
                 <pre class="emailBodyStyled">
@@ -56,8 +56,8 @@
           </v-card-text>
           <v-card-actions v-if="dialogMode == 'Compose'">
             <v-spacer></v-spacer>
-            <v-btn color="red darken-1" text @click="cancelComposeEmail">Cancel</v-btn>
-            <v-btn color="success" @click="sendEmail"><v-icon left>mdi-send</v-icon>Send</v-btn>
+            <v-btn color="red darken-1" text @click="cancelComposeEmail" name="btn_cancel_compose_mail">Cancel</v-btn>
+            <v-btn color="success" @click="sendEmail" name="btn_send_email"><v-icon left>mdi-send</v-icon>Send</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -68,7 +68,7 @@
     >
       <v-col cols="3">
         <div class="inboxLeftPanel">
-          <v-btn block color="#00B493" dark @click="composeEmail">Compose Mail</v-btn>
+          <v-btn block color="#00B493" dark @click="composeEmail" name="btn_compose_mail">Compose Mail</v-btn>
           <v-list
             nav
             dense
@@ -98,6 +98,16 @@
                     :color="item.badge_color"
                   >
                     {{unreadCount}}
+                  </v-chip>
+                </v-list-item-avatar>
+                <v-list-item-avatar v-else-if="item.text == 'Sent Mail' && unreadSentCount > 0">
+                  <v-chip
+                    label
+                    dark
+                    small
+                    :color="item.badge_color"
+                  >
+                    {{unreadSentCount}}
                   </v-chip>
                 </v-list-item-avatar>
                 <v-list-item-avatar v-else-if="item.text == 'Drafts' && draftCount > 0">
@@ -178,7 +188,7 @@
             <v-btn tile outlined small class="ma-1" @click="refreshInbox" :disabled="inboxLoading" :loading="inboxLoading"><v-icon left>mdi-autorenew</v-icon>Refresh</v-btn>
             <v-btn tile outlined small class="ma-1" @click="markRead"><v-icon>mdi-eye</v-icon></v-btn>
             <v-btn tile outlined small class="ma-1"><v-icon>mdi-exclamation</v-icon></v-btn>
-            <v-btn tile outlined small class="ma-1" @click="deleteEmails"><v-icon>mdi-trash-can-outline</v-icon></v-btn>
+            <v-btn tile outlined small class="ma-1" @click="deleteEmails" name="btn_delete_email"><v-icon>mdi-trash-can-outline</v-icon></v-btn>
             <v-spacer></v-spacer>
             <v-btn-toggle>
               <v-btn tile outlined small class="ma-1"><v-icon>mdi-arrow-left-thick</v-icon></v-btn>

@@ -18,8 +18,8 @@
 
         <v-list-item link>
           <v-list-item-content>
-            <v-list-item-title class="title">{{currentUser.name}}</v-list-item-title>
-            <v-list-item-subtitle>{{currentUser.designation}}</v-list-item-subtitle>
+            <v-list-item-title class="title current_user_name">{{currentUser.name}}</v-list-item-title>
+            <v-list-item-subtitle class="current_user_designation">{{currentUser.designation}}</v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-action>
@@ -79,7 +79,7 @@
       fixed
       app
     >
-      <v-btn dark class="ma-2" :color="sahajColor" @click.stop="miniVariant = !miniVariant">
+      <v-btn dark class="ma-2" :color="sahajColor" name="btn_toggle_mini" @click.stop="miniVariant = !miniVariant">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
       <v-text-field
@@ -103,7 +103,7 @@
           <v-icon>mdi-bell</v-icon>
         </v-btn>
       </v-badge>
-      <v-btn class="ma-2" text @click="logoutUser">
+      <v-btn class="ma-2" text name="btn_logout" @click="logoutUser">
         <v-icon left>mdi-logout</v-icon> Log out
       </v-btn>
     </v-app-bar>

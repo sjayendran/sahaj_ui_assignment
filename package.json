@@ -8,7 +8,9 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "dependencies": {
     "@nuxtjs/moment": "^1.4.0",
@@ -17,5 +19,6 @@
     "nuxt-vuex-localstorage": "^1.2.6"
   },
   "devDependencies": {
+    "cypress": "^3.8.1"
   }
 }
