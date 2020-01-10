@@ -87,6 +87,7 @@
         flat
         solo
         label="Search for something..."
+        name="input_navbar_search_filter"
         v-model="layoutSearchFilter"
       ></v-text-field>
       <!-- <v-toolbar-title v-text="title" /> -->

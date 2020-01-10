@@ -5,6 +5,7 @@
 ## Summary of technologies used:
 - JS Framework: Vue.JS / NuxtJS / VueX  
 - Front end framework: Vuetify.JS  
+- E2E Test framework: Cypress.IO (npm run test)
 - Deployment platform: Zeit's Now (Netlify caused deployment errors)  
 - Data is persisted in local storage, and accessed via VueJS's Vuex system  
 

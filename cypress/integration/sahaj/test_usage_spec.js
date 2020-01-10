@@ -131,6 +131,28 @@ describe("Delete Functionality", function() {
     })
 })
 
+describe("Inbox Search Functionality", function() {
+    it("Able to search for emails and results update accordingly", function() {
+        cy.visit("/")
+        cy.get("input[name='email']").type("david@williams.com")
+        cy.get("input[name='password']").type("password123")
+        cy.get("button[name='btn_reset']").click()
+        cy.get("button[name='btn_login']").click()
+        cy.url().should('include', '/inbox')
+        cy.get("h1").should('contain', 'Inbox')
+        cy.get('tbody').children().its('length').should('eq', 10) //on first login inbox rows should be 10
+        cy.get("input[name='input_navbar_search_filter']").type("facebook") //type text into navbar search filter
+        cy.get('tbody').children().its('length').should('eq', 1) //with search filter inbox count should match results, i.e. 1
+        cy.get("input[name='input_navbar_search_filter']").clear() //clear search
+        cy.get('tbody').children().its('length').should('eq', 10) //inbox rows should return to 10
+        cy.get("input[name='input_search_filter']").type("google") //type text into navbar search filter
+        cy.get('tbody').children().should('contain', 'No matching records found') //with search filter, if no matching emails found, nothing should be shown
+        cy.get("input[name='input_search_filter']").clear() //clear search
+        cy.get("button[name='btn_logout']").should('be.visible')
+        cy.get("button[name='btn_logout']").click()
+    })
+})
+
 describe("Sidebar Functionality", function() {
     it("Can expand and collapse navigation sidebar", function() {
         cy.visit("/")

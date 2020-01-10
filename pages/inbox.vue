@@ -177,6 +177,7 @@
             <v-text-field
               v-model="emailSearchFilter"
               label="Search email"
+              name="input_search_filter"
               outlined
               height="10"
               dense
